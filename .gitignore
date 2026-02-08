@@ -1,9 +1,14 @@
+# =========================
 # Node modules
+# =========================
 /node_modules/
 
+# =========================
 # Build output
+# =========================
 /dist/
 /build/
+/out/
 
 # Vite cache
 /.vite/
@@ -11,22 +16,33 @@
 # TypeScript cache
 *.tsbuildinfo
 
+# =========================
 # Logs
+# =========================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# =========================
 # Dependency directories
+# =========================
 /.pnp
 .pnp.js
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
 
+# =========================
 # Environment files
+# =========================
 .env
 .env.local
 .env.*.local
 
+# =========================
 # Editor / IDE
+# =========================
 .vscode/
 .idea/
 *.suo
@@ -35,19 +51,28 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-# Test coverage
+# =========================
+# Test coverage / cache
+# =========================
 /coverage/
 /jest-cache/
 /jest-test-results.json
+/tsconfig.tsbuildinfo
 
+# =========================
 # OS files
+# =========================
 .DS_Store
 Thumbs.db
 
-# Misc
+# =========================
+# Miscellaneous
+# =========================
 *.log
 *.lock
 *.tgz
 
+# =========================
 # Cloudflare Pages
+# =========================
 /.cloudflare/
