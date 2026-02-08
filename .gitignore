@@ -48,3 +48,6 @@ Thumbs.db
 *.log
 *.lock
 *.tgz
+
+# Cloudflare Pages
+/.cloudflare/
