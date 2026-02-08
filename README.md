@@ -1,73 +1,119 @@
-# React + TypeScript + Vite
+Tracciato DAT 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gestisci facilmente i tuoi file tracciato con il nostro sistema di creazione e parsing di record .dat! Questo progetto è pensato per caricare, gestire e validare dati strutturati in un formato personalizzato. Può essere usato per qualsiasi esigenza di carico dati che richieda la formattazione rigorosa dei record.
 
-Currently, two official plugins are available:
+🔥 Funzionalità principali
+✅ Creazione dei Tracciati
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Crea e formatta tracciati personalizzati. I tracciati sono gestiti tramite classi e campi strutturati, con i record separati da @.
 
-## React Compiler
+📝 Supporto per vari tipi di record
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Record di testata (00): Gestisce le informazioni generali e comuni a tutti i tipi di record.
 
-## Expanding the ESLint configuration
+Record Sostituti comunicazioni (15): Supporta operazioni di inserimento, modifica e cancellazione.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Supporto per la gestione di altri tipi di record, come Sostituti importi (16), Anagrafica (01), e così via.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🔄 Operazioni sui record
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Inserimento di nuovi record.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Modifica dei record esistenti, con restrizioni specifiche.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Cancellazione dei record, incluso il supporto per la gestione gerarchica tra i record (ad esempio, record 15 e 16).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+🧑‍💻 Struttura del Progetto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Il progetto è organizzato in modo semplice e chiaro. Ecco una panoramica delle cartelle e file principali:
+
+src/
+│
+├── components/
+│   ├── tracciato/
+│   │   ├── Field.ts         # Gestione dei singoli campi nel tracciato
+│   │   ├── Testata.ts       # Classe per il record di testata (00)
+│   │   └── Record15.ts      # Classe per il record tipo 15 (Sostituti comunicazioni)
+│   │
+│   ├── App.tsx              # Componente principale dell'applicazione React
+│
+├── public/
+│   └── index.html           # File HTML di base
+│
+├── package.json             # Gestione delle dipendenze e degli script di build
+└── tsconfig.json            # Configurazione di TypeScript
+
+🚀 Come Iniziare
+1. Clonare il repository
+
+Per iniziare, clona il repository:
+
+git clone https://github.com/fabriziopapa/tracciato-dat.git
+
+2. Installare le dipendenze
+
+Installiamo tutte le dipendenze necessarie per il progetto:
+
+npm install
+
+3. Avviare il progetto in modalità sviluppo
+
+Avvia il server di sviluppo con:
+
+npm run dev
+
+
+L'app sarà disponibile su http://localhost:3000
+.
+
+4. Creare una versione di produzione
+
+Per creare una build di produzione, esegui:
+
+npm run build
+
+
+La build ottimizzata sarà disponibile nella cartella dist/.
+
+🧑‍🏫 Utilizzo delle Classi
+Classe Testata (Record 00)
+
+La classe Testata rappresenta il record di testata che contiene i primi 9 campi di ogni record. Ecco come usarla:
+
+import { Testata } from './components/tracciato/Testata';
+
+const testata = new Testata();
+const tracciatoTestata = testata.toString();
+console.log(tracciatoTestata);  // Es: 000000@I@@15@00@000000@0@0000@000000@70002@09/11/2001@11.00.00@0@1@0@
+
+Classe Record15 (Sostituti Comunicazioni)
+
+La classe Record15 estende la Testata e aggiunge i campi specifici per il record 15. Ecco un esempio:
+
+import { Testata } from './components/tracciato/Testata';
+import { Record15 } from './components/tracciato/Record15';
+
+const testata = new Testata();
+const record15 = new Record15(testata);
+const tracciatoRecord15 = record15.toString();
+console.log(tracciatoRecord15);  // Es: 000000@I@@15@00@000000@0@0000@000000@70002@09/11/2001@11.00.00@0@1@0@70003@15@Sostituto@2022-11-01@Q@01...
+
+💡 Tecnologie utilizzate
+
+React (frontend): La libreria per la creazione dell'interfaccia utente.
+
+TypeScript: Per una gestione dei tipi sicura e robusta.
+
+Vite: Il tool di sviluppo che rende il progetto super veloce con il live-reloading.
+
+GitHub Actions: Per la gestione automatica dei flussi di lavoro CI/CD.
+
+🤝 Contributi
+
+Se vuoi contribuire al progetto, sei il benvenuto! Puoi fare il fork del repository, implementare le tue modifiche e inviare una pull request. Se trovi bug o hai suggerimenti, apri una issue.
+
+📜 Licenza
+
+Questo progetto è sotto licenza MIT. Vedi il file LICENSE per maggiori dettagli.
+
+✨ Grazie per il tuo interesse! Se hai domande, apri una issue o contattami direttamente. Buon lavoro! 😊
