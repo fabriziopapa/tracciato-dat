@@ -12,7 +12,7 @@ Crea e formatta **tracciati personalizzati**. I tracciati sono gestiti tramite c
 ### 📝 Supporto per vari tipi di record
 - **Record di testata (00)**: Gestisce le informazioni generali e comuni a tutti i tipi di record.
 - **Record Sostituti comunicazioni (15)**: Supporta operazioni di **inserimento**, **modifica** e **cancellazione**.
-- Supporto per la gestione di altri tipi di record, come **Sostituti importi (16)**, **Anagrafica (01)**, e così via.
+- Supporto per la gestione di altri tipi di record, come **Sostituti importi (16)** in futuro saranno gestiti altri record.
 
 ### 🔄 Operazioni sui record
 - **Inserimento** di nuovi record.
