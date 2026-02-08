@@ -78,8 +78,8 @@ npm run build
 
 La build ottimizzata sarà disponibile nella cartella dist/.
 
-🧑‍🏫 Utilizzo delle Classi
-Classe Testata (Record 00)
+## 🧑‍🏫 Utilizzo delle Classi
+# Classe Testata (Record 00)
 
 La classe Testata rappresenta il record di testata che contiene i primi 9 campi di ogni record. Ecco come usarla:
 ```typescript
@@ -90,7 +90,7 @@ const tracciatoTestata = testata.toString();
 console.log(tracciatoTestata);  // Es: 000000@I@@15@00@000000@0@0000@000000@70002@09/11/2001@11.00.00@0@1@0@
 ```
 
-Classe Record15 (Sostituti Comunicazioni)
+# Classe Record15 (Sostituti Comunicazioni)
 
 La classe Record15 estende la Testata e aggiunge i campi specifici per il record 15. Ecco un esempio:
 ```typescript
@@ -102,7 +102,7 @@ const record15 = new Record15(testata);
 const tracciatoRecord15 = record15.toString();
 console.log(tracciatoRecord15);  // Es: 000000@I@@15@00@000000@0@0000@000000@70002@09/11/2001@11.00.00@0@1@0@70003@15@Sostituto@2022-11-01@Q@01...
 ```
-##💡 Tecnologie utilizzate
+## 💡 Tecnologie utilizzate
 
 React (frontend): La libreria per la creazione dell'interfaccia utente.
 
