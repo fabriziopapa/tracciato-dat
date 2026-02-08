@@ -7,18 +7,20 @@ import { Record15 } from './components/tracciato/Record15';
 const App = () => {
   // Crea la testata (Tipo 00)
   const testata = new Testata();
-
+  const tracciato00 = testata.toString();
   // Crea il record 15
   const record15 = new Record15(testata);
 
   // Genera il tracciato per il record 15
-  const tracciato = record15.toString();
+  const tracciato15 = record15.toString();
 
   // Utilizziamo React esplicitamente nel JSX, per esempio usando un componente div
   return (
     <div>
+      <h1>Tracciato 00</h1>
+      <pre>{tracciato00}</pre>
       <h1>Tracciato Record 15</h1>
-      <pre>{tracciato}</pre>
+      <pre>{tracciato15}</pre>
 
       {/* Un esempio di utilizzo esplicito di React.createElement */}
       {React.createElement('footer', null, 'Generato tramite React')}
